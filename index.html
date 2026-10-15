@@ -249,7 +249,7 @@
 
                         <!-- Foto del Miembro -->
         <a href="https://photos.app.goo.gl/P5KN3rXErKw854FB9" target="_blank">
-            <img src="alexis.jpg" alt="Alexis Morales" class="member-photo" style="width: 110px; height: 110px; object-fit: cover; border-radius: 50%; display: block; margin: 0.75rem auto; border: 3px solid #e2e8f0;>
+            <img src="alexis.jpg" alt="Alexis Morales" class="member-photo" style="width: 110px; height: 110px; object-fit: cover; border-radius: 50%; display: block; margin: 0.75rem auto; border: 3px solid #e2e8f0;">
         </a>
                         
                         <h3>Alexis Morales</h3>
@@ -281,16 +281,16 @@
         </div>
 
         <!-- ================= SECCIÓN SÁBADOS ================= -->
-        <div id="sabados-section" class="section-content">
+        <div id="actividades-section" class="section-content">
             <!-- Filtro por Años -->
             <div class="sub-filters">
-                <button class="filter-btn active" onclick="filterSabados('todos', this)">Todos los Años</button>
-                <button class="filter-btn" onclick="filterSabados('2026', this)">2026</button>
-                <button class="filter-btn" onclick="filterSabados('2025', this)">2025</button>
-                <button class="filter-btn" onclick="filterSabados('2023', this)">2023</button>
+                <button class="filter-btn active" onclick="filterActividades('todos', this)">Todos los Años</button>
+                <button class="filter-btn" onclick="filterActividades('2026', this)">2026</button>
+                <button class="filter-btn" onclick="filterActividades('2025', this)">2025</button>
+                <button class="filter-btn" onclick="filterActividades('2023', this)">2023</button>
             </div>
 
-            <div class="grid" id="sabadosGrid">
+            <div class="grid" id="actividadesGrid">
                 <!-- Sábado Ejemplo 2026 -->
                 <div class="card" data-name="sabado 10 de octubre 2026 octubre" data-year="2026">
                     <div>
@@ -345,7 +345,7 @@
                 document.getElementById('miembros-section').classList.add('active');
             } else {
                 document.querySelectorAll('.main-tab-btn')[1].classList.add('active');
-                document.getElementById('sabados-section').classList.add('active');
+                document.getElementById('actividades-section').classList.add('active');
             }
             filterContent();
         }
@@ -359,7 +359,7 @@
         }
 
         // Filtrar Sábados por Año
-        function filterSabados(year, btnElement) {
+        function filteractividades(year, btnElement) {
             sabadoYearFilter = year;
             btnElement.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btnElement.classList.add('active');
@@ -386,7 +386,7 @@
                     }
                 });
             } else {
-                let cards = document.querySelectorAll('#sabadosGrid .card');
+                let cards = document.querySelectorAll('#actividadesGrid .card');
                 cards.forEach(card => {
                     let name = card.getAttribute('data-name');
                     let year = card.getAttribute('data-year');
