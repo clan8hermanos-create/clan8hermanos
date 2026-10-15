@@ -210,7 +210,9 @@
             font-size: 0.85rem;
             border-top: 1px solid var(--border-color);
             margin-top: 3rem;
-/* Estilo para las fotos de perfil de los miembros */
+            }
+        
+            /* Estilo para las fotos de perfil de los miembros */
         .member-photo {
             width: 110px;
             height: 110px;
@@ -226,6 +228,17 @@
             transform: scale(1.05);
             border-color: var(--primary-color);
         }
+/* Filtro para que la foto de los inactivos sea en blanco y negro */
+.card[data-status="inactivo"] .member-photo {
+    filter: grayscale(100%);
+    opacity: 0.85; /* Opcional: le da un tono ligeramente atenazado */
+    transition: filter 0.3s ease;
+}
+
+/* Opcional: si pasan el cursor sobre la foto del inactivo, vuelve a color suavemente */
+.card[data-status="inactivo"]:hover .member-photo {
+    filter: grayscale(0%);
+}   
     </style>
 </head>
 <body>
