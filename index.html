@@ -210,6 +210,22 @@
             font-size: 0.85rem;
             border-top: 1px solid var(--border-color);
             margin-top: 3rem;
+            /* Estilo para las fotos de perfil de los miembros */
+.member-photo {
+    width: 110px;
+    height: 110px;
+    object-fit: cover; /* Mantiene la proporción de la foto sin deformarla */
+    border-radius: 50%; /* 50% para que sea un círculo perfecto (usa 0.75rem si prefieres bordes redondeados) */
+    margin: 0.75rem auto;
+    display: block;
+    border: 3px solid #e2e8f0;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+/* Efecto al pasar el cursor sobre la foto */
+.card:hover .member-photo {
+    transform: scale(1.05);
+    border-color: var(--primary-color);
         }
     </style>
 </head>
@@ -246,6 +262,12 @@
                 <div class="card" data-name="alexis morales" data-status="activo">
                     <div>
                         <span class="badge activo">Activo</span>
+
+                        <!-- Foto del Miembro -->
+        <a href="https://photos.app.goo.gl/P5KN3rXErKw854FB9" target="_blank">
+            <img src="alexis.jpg" alt="Alexis Morales" class="member-photo">
+        </a>
+                        
                         <h3>Alexis Morales</h3>
                         <p>Álbum facial personal</p>
                     </div>
