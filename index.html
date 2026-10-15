@@ -75,7 +75,7 @@
             box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
         }
 
-        /* Subfiltros (Miembros: Activos/Inactivos | Sábados: Años) */
+        /* Subfiltros (Miembros: Activos/Inactivos | Actividades: Años) */
         .sub-filters {
             display: flex;
             justify-content: center;
@@ -197,10 +197,51 @@
             font-size: 0.9rem;
             transition: background-color 0.2s;
             display: inline-block;
+            margin-top: 0.25rem;
         }
 
         .btn-link:hover {
             background-color: var(--primary-hover);
+        }
+
+        /* Contenedor circular con marco fijo para fotos */
+        .photo-container {
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            overflow: hidden;
+            margin: 0.75rem auto;
+            display: block;
+            border: 3px solid #e2e8f0;
+            transition: border-color 0.3s ease;
+        }
+
+        .member-photo {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.3s ease, filter 0.3s ease;
+        }
+
+        /* Zoom elegante al pasar el cursor */
+        .card:hover .photo-container {
+            border-color: var(--primary-color);
+        }
+
+        .card:hover .member-photo {
+            transform: scale(1.1);
+        }
+
+        /* Blanco y negro para inactivos */
+        .card[data-status="inactivo"] .member-photo {
+            filter: grayscale(100%);
+            opacity: 0.85;
+        }
+
+        .card[data-status="inactivo"]:hover .member-photo {
+            filter: grayscale(0%);
+            opacity: 1;
         }
 
         footer {
@@ -210,35 +251,7 @@
             font-size: 0.85rem;
             border-top: 1px solid var(--border-color);
             margin-top: 3rem;
-            }
-        
-            /* Estilo para las fotos de perfil de los miembros */
-        .member-photo {
-            width: 110px;
-            height: 110px;
-            object-fit: cover;
-            border-radius: 50%;
-            margin: 0.75rem auto;
-            display: block;
-            border: 3px solid #e2e8f0;
-            transition: transform 0.2s ease, border-color 0.2s ease;
         }
-
-        .card:hover .member-photo {
-            transform: scale(1.05);
-            border-color: var(--primary-color);
-        }
-/* Filtro para que la foto de los inactivos sea en blanco y negro */
-.card[data-status="inactivo"] .member-photo {
-    filter: grayscale(100%);
-    opacity: 0.85; /* Opcional: le da un tono ligeramente atenazado */
-    transition: filter 0.3s ease;
-}
-
-/* Opcional: si pasan el cursor sobre la foto del inactivo, vuelve a color suavemente */
-.card[data-status="inactivo"]:hover .member-photo {
-    filter: grayscale(0%);
-}   
     </style>
 </head>
 <body>
@@ -270,48 +283,39 @@
             </div>
 
             <div class="grid" id="miembrosGrid">
-                <!-- Miembro Activo Ejemplo 1 -->
+                <!-- Miembro Activo 1 -->
                 <div class="card" data-name="alexis morales" data-status="activo">
                     <div>
                         <span class="badge activo">Activo</span>
-
-                        <!-- Foto del Miembro -->
-        <a href="https://photos.app.goo.gl/P5KN3rXErKw854FB9" target="_blank">
-            <img src="alexis.jpg" alt="Alexis Morales" class="member-photo" style="width: 110px; height: 110px; object-fit: cover; border-radius: 50%; display: block; margin: 0.75rem auto; border: 3px solid #e2e8f0;">
-        </a>
-                        
+                        <a href="https://photos.app.goo.gl/P5KN3rXErKw854FB9" target="_blank" class="photo-container">
+                            <img src="alexis.jpg" alt="Alexis Morales" class="member-photo">
+                        </a>
                         <h3>Alexis Morales</h3>
                         <p>Álbum facial personal</p>
                     </div>
                     <a href="https://photos.app.goo.gl/P5KN3rXErKw854FB9" target="_blank" class="btn-link">Ver Álbum</a>
                 </div>
 
-                <!-- Miembro Activo Ejemplo 2 -->
+                <!-- Miembro Activo 2 -->
                 <div class="card" data-name="andre datri" data-status="activo">
                     <div>
                         <span class="badge activo">Activa</span>
-
-                                                <!-- Foto del Miembro -->
-        <a href="https://photos.app.goo.gl/cYiMJUpya3NpvoT36" target="_blank">
-            <img src="andre.jpg" alt="André D'atri" class="member-photo" style="width: 110px; height: 110px; object-fit: cover; border-radius: 50%; display: block; margin: 0.75rem auto; border: 3px solid #e2e8f0;">
-        </a>
-                        
+                        <a href="https://photos.app.goo.gl/cYiMJUpya3NpvoT36" target="_blank" class="photo-container">
+                            <img src="andre.jpg" alt="André D'atri" class="member-photo">
+                        </a>
                         <h3>André D'atri</h3>
                         <p>Álbum facial personal</p>
                     </div>
                     <a href="https://photos.app.goo.gl/cYiMJUpya3NpvoT36" target="_blank" class="btn-link">Ver Álbum</a>
                 </div>
 
-                <!-- Miembro Inactivo Ejemplo -->
+                <!-- Miembro Inactivo -->
                 <div class="card" data-name="victoria ballini" data-status="inactivo">
                     <div>
                         <span class="badge inactivo">Inactivo</span>
-
-                                                                        <!-- Foto del Miembro -->
-        <a href="https://photos.app.goo.gl/QcDqhjxHybJpPt8U9" target="_blank">
-            <img src="vicky.jpg" alt="Victoria Ballini" class="member-photo" style="width: 110px; height: 110px; object-fit: cover; border-radius: 50%; display: block; margin: 0.75rem auto; border: 3px solid #e2e8f0;">
-        </a>
-                        
+                        <a href="https://photos.app.goo.gl/QcDqhjxHybJpPt8U9" target="_blank" class="photo-container">
+                            <img src="vicky.jpg" alt="Victoria Ballini" class="member-photo">
+                        </a>
                         <h3>Victoria Ballini</h3>
                         <p>Álbum de fotos histórico</p>
                     </div>
@@ -320,7 +324,7 @@
             </div>
         </div>
 
-        <!-- ================= SECCIÓN SÁBADOS ================= -->
+        <!-- ================= SECCIÓN ACTIVIDADES ================= -->
         <div id="actividades-section" class="section-content">
             <!-- Filtro por Años -->
             <div class="sub-filters">
@@ -339,7 +343,7 @@
                         <p>Promesa de Andre / Pases caminante / Partida de Wanda</p>
                     </div>
                     <a href="https://drive.google.com/drive/folders/1ggl_bihoqA3a1izf-77gNghO8nej0me9?usp=drive_link" target="_blank" class="btn-link">Ver Álbum de Drive</a>
-                    <a href="https://photos.app.goo.gl/H4mE4t4PxkbFDHLD7" class="btn-link">Ver Álbum de Google Fotos</a>
+                    <a href="https://photos.app.goo.gl/H4mE4t4PxkbFDHLD7" target="_blank" class="btn-link">Ver Álbum de Google Fotos</a>
                 </div>
 
                 <!-- Sábado Ejemplo 2025 -->
@@ -353,7 +357,7 @@
                 </div>
 
                 <!-- Sábado Ejemplo 2023 -->
-                <div class="card" data-name="Sábado 1 Domingo 2 de Diciembre 2023 diciembre" data-year="2023">
+                <div class="card" data-name="sabado 1 domingo 2 de diciembre 2023 diciembre" data-year="2023">
                     <div>
                         <span class="badge year">2023</span>
                         <h3>Sábado 1 - Domingo 2 de Diciembre</h3>
@@ -372,9 +376,9 @@
     <script>
         let currentTab = 'miembros';
         let memberStatusFilter = 'todos';
-        let sabadoYearFilter = 'todos';
+        let actividadYearFilter = 'todos';
 
-        // Cambiar entre Pestaña Miembros y Sábados
+        // Cambiar entre Pestaña Miembros y Actividades
         function switchMainTab(tabName) {
             currentTab = tabName;
             document.querySelectorAll('.main-tab-btn').forEach(btn => btn.classList.remove('active'));
@@ -398,9 +402,9 @@
             filterContent();
         }
 
-        // Filtrar Sábados por Año
-        function filteractividades(year, btnElement) {
-            sabadoYearFilter = year;
+        // Filtrar Actividades por Año
+        function filterActividades(year, btnElement) {
+            actividadYearFilter = year;
             btnElement.parentElement.querySelectorAll('.filter-btn').forEach(b => b.classList.remove('active'));
             btnElement.classList.add('active');
             filterContent();
@@ -432,7 +436,7 @@
                     let year = card.getAttribute('data-year');
 
                     let matchesSearch = name.includes(search);
-                    let matchesYear = (sabadoYearFilter === 'todos') || (year === sabadoYearFilter);
+                    let matchesYear = (actividadYearFilter === 'todos') || (year === actividadYearFilter);
 
                     if (matchesSearch && matchesYear) {
                         card.style.display = "flex";
