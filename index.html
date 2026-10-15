@@ -75,7 +75,7 @@
             box-shadow: 0 4px 6px -1px rgba(79, 70, 229, 0.2);
         }
 
-        /* Subfiltros (Miembros: Activos/Inactivos | Actividades: Años) */
+        /* Subfiltros */
         .sub-filters {
             display: flex;
             justify-content: center;
@@ -224,7 +224,6 @@
             transition: transform 0.3s ease, filter 0.3s ease;
         }
 
-        /* Zoom elegante al pasar el cursor */
         .card:hover .photo-container {
             border-color: var(--primary-color);
         }
@@ -233,7 +232,6 @@
             transform: scale(1.1);
         }
 
-        /* Blanco y negro para inactivos */
         .card[data-status="inactivo"] .member-photo {
             filter: grayscale(100%);
             opacity: 0.85;
